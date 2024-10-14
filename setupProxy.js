@@ -6,6 +6,7 @@ module.exports = function (app) {
     '/api', // 这里是你要代理的接口路径
     createProxyMiddleware({
       target: 'http://localhost:5000', // 你的后端 API 地址
+      target: 'https://hnjswlxy.cn/',
       changeOrigin: true,
       pathRewrite: {
         '^/api': '', // 如果需要重写路径
