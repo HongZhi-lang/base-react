@@ -1,70 +1,59 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### 目录结构
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+my-react-app/
+├── public/                          # 静态资源，未经过 Webpack 处理的文件
+│   ├── index.html                   # 主 HTML 文件
+│   └── ...                          # 其他静态资源（favicon, icons, etc.）
+├── src/                             # 项目主要源码
+│   ├── api/                         # 与后端 API 交互的服务层
+│   │   └── auth.js                  # 例如：用户登录、注册等 API 请求文件
+│   │   └── http.js                  # 请求工具文件（比如 axios 实例）
+│   │   └── ...
+│   ├── assets/                      # 静态资源，如图片、字体等
+│   │   ├── images/
+│   │   ├── fonts/
+│   │   └── ...
+│   ├── components/                  # 可复用的独立 UI 组件
+│   │   ├── Header.js                # 头部组件
+│   │   ├── Footer.js                # 底部组件
+│   │   ├── Button.js                # 通用按钮组件
+│   │   └── ...
+│   ├── hooks/                       # 自定义 Hook
+│   │   └── useAuth.js               # 例如：自定义的认证 Hook
+│   │   └── useFetch.js              # 数据获取 Hook
+│   │   └── ...
+│   ├── layouts/                     # 页面布局组件
+│   │   ├── MainLayout.js            # 主布局组件
+│   │   └── ...
+│   ├── pages/                       # 页面组件，每个文件对应一个页面
+│   │   ├── Home.js                  # 首页
+│   │   ├── Login.js                 # 登录页
+│   │   ├── Dashboard.js             # 仪表盘页面
+│   │   └── ...
+│   ├── routes/                      # 路由配置
+│   │   ├── PrivateRoute.js          # 路由守卫
+│   │   ├── AppRoutes.js             # 所有路由的配置
+│   │   └── ...
+│   ├── store/                       # 全局状态管理
+│   │   ├── redux/                   # 如果使用 Redux
+│   │   │   ├── authSlice.js         # Auth 相关的 Redux slice
+│   │   │   ├── store.js             # Redux store
+│   │   │   └── ...
+│   │   └── zustand/                 # 如果使用 Zustand
+│   │       ├── authStore.js         # Auth 相关的 Zustand store
+│   │       └── ...
+│   ├── styles/                      # 全局样式文件
+│   │   ├── index.css                # 全局通用样式
+│   │   └── variables.css            # 全局 CSS 变量（如颜色、字体等）
+│   ├── utils/                       # 工具函数和帮助函数
+│   │   ├── formatDate.js            # 日期格式化工具函数
+│   │   └── storage.js               # 本地存储相关工具函数
+│   ├── App.js                       # 主应用组件
+│   ├── index.js                     # 应用入口，渲染根组件
+│   └── ...
+├── .env                             # 环境变量
+├── package.json                     # 项目依赖及配置信息
+├── README.md                        # 项目简介
+└── ...

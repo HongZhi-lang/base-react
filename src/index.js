@@ -1,17 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./styles/index.css"; // 全局样式
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// import reportWebVitals from "./reportWebVitals";
+
+import { Provider } from "react-redux"; // Redux 提供者
+import store from "./store"; // Redux 存储
+
+import { ConfigProvider } from "antd"; // Ant Design 提供者
+import zhCN from "antd/locale/zh_CN"; // 中文语言包
+
+import AppRoutes from "./routes/AppRoutes"; // 引入路由组件
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      {/* 提供 Redux 存储 */}
+      <ConfigProvider locale={zhCN}>
+        {/* Ant Design 语言设置 */}
+        <AppRoutes /> {/* 渲染路由组件 */}
+      </ConfigProvider>
+    </Provider>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// 性能监测
+// reportWebVitals();
